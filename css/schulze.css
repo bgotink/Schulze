@@ -1,0 +1,19 @@
+div.content {
+    height: 70%;
+}
+
+div.log {
+    background-color: #dedede;
+    border: 1px solid gray;
+    height: 150px;
+    overflow-y: scroll;
+}
+
+div.log > p {
+    padding: 0;
+    margin: 0;
+}
+
+div.logheader {
+    margin-top: 2em;
+}

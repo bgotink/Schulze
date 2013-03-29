@@ -1,0 +1,19 @@
+CACHE MANIFEST
+# version 2013032902
+
+CACHE:
+index.html
+css/schulze.css
+js/schulze.js
+js/main.js
+vendor/css/bootstrap-responsive.min.css
+vendor/css/bootstrap.cosmo.min.css
+vendor/css/bootstrap.cosmo.font.css
+vendor/js/bootstrap.min.js
+vendor/js/jquery-1.8.2.min.js
+vendor/img/glyphicons-halflings.png
+vendor/img/glyphicons-halflings-white.png
+vendor/ttf/OpenSans.ttf
+vendor/ttf/OpenSans_italic.ttf
+vendor/ttf/OpenSans_bold.ttf
+vendor/ttf/OpenSans_bold_italic.ttf
