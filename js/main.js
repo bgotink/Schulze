@@ -1,3 +1,22 @@
+/*
+
+    This file is part of VTK Schulze
+
+    VTK Schulze is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    VTK Schulze is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+ */
+
 $(document).ready(function() {
 
     Logger._println = function(msg, klass) {
@@ -7,61 +26,6 @@ $(document).ready(function() {
             scrollTop: log[0].scrollHeight
         }, 800);
     }
-    
-    $('#reset').on('click', function() {
-        document.location.reload();
-        return false;
-    });
-    
-    var BreadCrumb = (function() {
-        var _breadcrumbs = ['Home'];
-        
-        var _resetListeners = function() {
-            $('ul.breadcrumb > li > a').off('click').on('click', function() { return false; });
-        }
-        
-        var _updateBC = function() {
-            var shownBC = $('ul.breadcrumb > li > a').toArray().reverse();
-            var breadcrumb = $('ul.breadcrumb');
-            
-            // in case one is added
-            if (shownBC.length == _breadcrumbs.length - 1) {
-                var prevLast = $(shownBC[0]);
-                prevLast.removeClass('active');
-                prevLast = prevLast.parent();
-                
-                prevLast.append($('<span class="divider">></span>'));
-                breadcrumb.append($('<li><a href="#" class="active" data-breadcrumb="' + _breadcrumbs[0] + '\">'
-                            + _breadcrumbs[0] + '</a></li>'));
-
-                _resetListeners();
-                return;
-            }
-            
-            // one is removed, or this is an error
-            if (shownBC.length - 1 != _breadcrumbs.length)
-                return;
-            
-            breadcrumb.remove(shownBC[0]);
-            breadcrumb.remove(shownBC[1]);
-            breadcrumb.append($('<li><a href="#" class="active" data-breadcrumb="' + _breadcrumbs[1] + '\">'
-                        + _breadcrumbs[1] + '</a></li>'));
-            _resetListeners();
-        }
-        
-        return {
-            push: function(bc) {
-                if (_breadcrumbs[0] == bc) return;
-                
-                _breadcrumbs.unshift(bc);
-                _updateBC();
-            },
-            pop: function() {
-                _breadcrumbs.shift();
-                _updateBC();
-            }
-        }
-    })();
     
     var schulze = window._$ = new Schulze();
     var setActive = function(newActive, animate) {
@@ -74,12 +38,7 @@ $(document).ready(function() {
         });
     }
     
-    $('ul.breadcrumb > li > a').on('click', function() {
-        return false;
-    })
-    
     $('button#start_new_vote').on('click', function() {
-        BreadCrumb.push('Vote');
         setActive('#new_option', true);
         
         return false;
@@ -117,7 +76,6 @@ $(document).ready(function() {
     
     $('#go_to_voting').on('click', function() {
         setActive('#new_vote', true);
-        BreadCrumb.push('New vote');
         
         schulze.startVoting();
         

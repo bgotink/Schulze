@@ -1,9 +1,10 @@
 CACHE MANIFEST
-# version 2013032902
+# version 2013051201
 
 CACHE:
 index.html
 css/schulze.css
+img/schild.png
 js/schulze.js
 js/main.js
 vendor/css/bootstrap-responsive.min.css

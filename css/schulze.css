@@ -1,3 +1,29 @@
+/*
+
+    This file is part of VTK Schulze
+
+    VTK Schulze is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    VTK Schulze is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+ */
+
+div.schulzeheader {
+    background-color: #dedede;
+    padding: .5em;
+    margin-bottom: 1em;
+    font-size: 16pt;
+}
+
 div.content {
     height: 70%;
 }
@@ -12,8 +38,32 @@ div.log {
 div.log > p {
     padding: 0;
     margin: 0;
+    margin-left: .5em;
 }
 
 div.logheader {
     margin-top: 2em;
+}
+
+span.schild {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 180px;
+    height: 205px;
+    background: url('../img/schild.png') no-repeat;
+    z-index: -1;
+}
+
+div.powered {
+    text-align: center;
+    margin-top: 1em;
+}
+
+.btn-primary {
+    background-color: #292F76;
+}
+
+.btn-primary:hover {
+    background-color: #292FAA;
 }

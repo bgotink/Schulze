@@ -1,7 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" manifest="app.manifest">
-<html lang="en">
-<!-- version: 2013032902 -->
+<!--
+
+    This file is part of VTK Schulze
+
+    VTK Schulze is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    VTK Schulze is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+
+<<html lang="en" manifest="app.manifest">
+<!-- version: 2013051201 -->
 <head>
     <title>Schulze</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,21 +39,15 @@
 <body style="padding: 1em; height: 100%">
     <div class="container-fluid" style="height: 100%">
         <div class="row-fluid">
-            <div class="offset3 span6">
-                <ul class="breadcrumb span12">
-                <!--<ul class="breadcrumb span11" style="margin-right: 0;">-->
-                    <li><a href="#" data-breadcrumb="Home">Home</a></li>
-                </ul>
-                <!--<div class="span1 breadcrumb" style="margin-left: 0;">
-                    &nbsp;<a href="#" id="reset"><i class="icon-repeat"></i></a>
-                </div>-->
+            <div class="schulzeheader offset3 span6">
+                Schulze
             </div>
         </div>
         <div class="content row-fluid">
             <div id="content" class="offset3 span6">
                 <div id="home" class="active">
-                    <p>Enter a new voting.</p>
-                    <button id="start_new_vote" type="submit" class="btn btn-primary">New vote</button>
+                    <p>Start a new online vote.</p>
+                    <button id="start_new_vote" type="submit" class="btn btn-primary">New Vote</button>
                 </div>
                 <div id="new_option" style="display: none; opacity: 0">
                     <form onsubmit="return false;" class="form-inline">
@@ -44,7 +56,7 @@
                             <ol type="A" class="options"></ol>
                             <input id="new_option_title" type="text" class="span4" placeholder="Add a new option..." />
                             <button id="add_new_option" type="submit" class="btn btn-primary">Add</button>
-                            <button id="go_to_voting" type="submit" class="btn">Start voting</button>
+                            <button id="go_to_voting" type="submit" class="btn">Start Voting</button>
                         </fieldset>
                     </form>
                 </div>
@@ -59,8 +71,8 @@
                             <div class="helper-text">Number of votes: <span id="nb_votes">0</span></div>
                             <input id="new_vote_val" type="text" class="span4" placeholder="A-BC-DEF" />
                             <button id="add_new_vote" type="submit" class="btn btn-primary">Add</button>
-                            <button id="undo" class="btn">Undo last vote</button>
-                            <button id="go_to_result" type="submit" class="btn">Show result</button>
+                            <button id="undo" class="btn">Undo Last Vote</button>
+                            <!--<button id="go_to_result" type="submit" class="btn">Show result</button>-->
                         </fieldset>
                     </form>
                 </div>
@@ -76,6 +88,14 @@
                 <div id="log_last" style="display: none;">
             </div>
         </div>
+        <div class="row-fluid">
+            <div class="offset3 span6">
+                <div class="powered">
+                    Powered by <a href="//vtk.be">Vlaamse Technische Kring Leuven</a>
+                </div>
+            </div>
+        </div>
     </div>
+    <span class="schild" />
 </body>
 </html>
