@@ -67,3 +67,11 @@ div.powered {
 .btn-primary:hover {
     background-color: #292FAA;
 }
+
+a {
+    color: #292F76;
+}
+
+a:hover {
+    color: #292FAA;
+}
