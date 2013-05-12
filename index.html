@@ -19,7 +19,7 @@
 -->
 
 <html lang="en" manifest="app.manifest">
-<!-- version: 2013051203 -->
+<!-- version: 2013051204 -->
 <head>
     <title>Schulze</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -65,7 +65,14 @@
                         <fieldset>
                             <legend>Add a vote</legend>
                             <label>Options:</label>
-                            <ol type="A" class="options"></ol>
+                            <div class="row-fluid">
+                                <div class="span11">
+                                    <ol type="A" class="options" />
+                                </div>
+                                <div class="span1">
+                                    <ol class="optioncount" />
+                                </div>
+                            </div>
                             <label>Result so far:</label>
                             <div id="current_tmp_result"></div>
                             <div class="helper-text">Number of votes: <span id="nb_votes">0</span></div>

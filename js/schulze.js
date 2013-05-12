@@ -226,9 +226,34 @@ ResultCalculator.prototype.get = function(i, j, votes) {
     return votes[j][i] - votes[i][j];
 }
 
+ResultCalculator.prototype.getCandidateVoteCount = function () {
+    var counts = [];
+    var i;
+    
+    for (i = 0; i < this.size; i++) {
+        counts[i] = 0;
+    }
+    
+    this._origVotes.forEach(
+        function (vote) {
+            var votedOptions = [];
+            votedOptions = votedOptions.concat.apply(votedOptions, vote);
+
+            votedOptions.forEach(
+                function (option) {
+                    counts[option] ++;
+                }
+            );
+        }
+    );
+    
+    return counts;
+}
+
 ResultCalculator.prototype.getResult = function (ac, indices) {
     if (!ac) {
         indices = [];
+        var i;
         for (i = 0; i < this.size; i++) {
             indices.push(i);
         }
@@ -372,4 +397,8 @@ Schulze.prototype.getNbVotes = function() {
 
 Schulze.prototype.getResult = function() {
     return this.resultCalculator.getResult();
+}
+
+Schulze.prototype.getCandidateVoteCount = function () {
+    return this.resultCalculator.getCandidateVoteCount();
 }

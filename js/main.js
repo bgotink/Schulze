@@ -56,23 +56,12 @@ $(document).ready(function() {
             Logger.log("Added option \"" + newOption + "\"");
             
             $('ol.options').append('<li>' + newOption + '</li>');
+            $('ol.optioncount').append('<li>0</li>');
             $('input#new_option_title').val('');
             
             return false;
         }
     )
-    
-    var updateResult = function() {
-        $('div#current_tmp_result').html('<ol></ol');
-        {
-            var tmp = $('div#current_tmp_result > ol');
-            var res = schulze.getResult().split('-');
-            
-            res.forEach(function (e) {
-                tmp.append('<li>' + e + '</li>');
-            });
-        }
-    }
     
     $('#go_to_voting').on('click', function() {
         setActive('#new_vote', true);
@@ -83,6 +72,37 @@ $(document).ready(function() {
         
         return false;
     });
+    
+    var updateResult = function() {
+        $('div#current_tmp_result').html('<ol></ol');
+        var tmp = $('div#current_tmp_result > ol');
+        var res = schulze.getResult().split('-');
+        
+        res.forEach(function (e) {
+            tmp.append('<li>' + e + '</li>');
+        });
+    }
+    
+    var updateCounts = function () {
+        var counts = schulze.getCandidateVoteCount();
+        var display = $('ol.optioncount > li');
+        
+        var i, l = counts.length, t = schulze.getNbVotes() / 2;
+        for (i = 0; i < l; i++) {
+            var cur = $(display[i]);
+            cur.text(counts[i]);
+            
+            if (counts[i] >= t) {
+                if (cur.hasClass('invalid')) {
+                    cur.removeClass('invalid');
+                }
+            } else {
+                if (!cur.hasClass('invalid')) {
+                    cur.addClass('invalid');
+                }
+            }
+        }
+    }
     
     $('button#add_new_vote').on('click', function() {
         var newVote = $('input#new_vote_val').val().toUpperCase();
@@ -95,6 +115,8 @@ $(document).ready(function() {
         Logger.log("Added vote \"" + newVote + "\"");
         
         updateResult();
+        updateCounts();
+        
         $('#nb_votes').text(schulze.getNbVotes());
         $('input#new_vote_val').val('');
         

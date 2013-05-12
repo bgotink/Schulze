@@ -75,3 +75,15 @@ a {
 a:hover {
     color: #292FAA;
 }
+
+ol.optioncount {
+    list-style-type: none;
+}
+
+ol.optioncount > li {
+    color: #007000;
+}
+
+ol.optioncount > li.invalid {
+    color: #700000;
+}
