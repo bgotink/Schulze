@@ -18,6 +18,19 @@
  */
 
 $(document).ready(function() {
+    
+    //first, checks if it isn't implemented yet
+    if (!String.prototype.format) {
+      String.prototype.format = function() {
+        var args = arguments;
+        return this.replace(/{(\d+)}/g, function(match, number) { 
+          return typeof args[number] != 'undefined'
+            ? args[number]
+            : match
+          ;
+        });
+      };
+    }
 
     Logger._println = function(msg, klass) {
         $('<p class="' + klass + '">' + msg + '</p>').insertBefore($('#log_last'));
@@ -74,7 +87,7 @@ $(document).ready(function() {
     });
     
     var updateResult = function() {
-        $('div#current_tmp_result').html('<ol></ol');
+        $('div#current_tmp_result').html('<ol></ol>');
         var tmp = $('div#current_tmp_result > ol');
         var res = schulze.getResult().split('-');
         
@@ -87,10 +100,11 @@ $(document).ready(function() {
         var counts = schulze.getCandidateVoteCount();
         var display = $('ol.optioncount > li');
         
-        var i, l = counts.length, t = schulze.getNbVotes() / 2;
+        var i, l = counts.length, n = schulze.getNbVotes(), t = n / 2;
         for (i = 0; i < l; i++) {
             var cur = $(display[i]);
-            cur.text(counts[i]);
+            var perc = 100 * (counts[i] / n)
+            cur.text('{0} ({1}%)'.format(counts[i], perc.toFixed(2)));
             
             if (counts[i] >= t) {
                 if (cur.hasClass('invalid')) {
