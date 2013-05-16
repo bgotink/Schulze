@@ -19,7 +19,7 @@
 -->
 
 <html lang="en" manifest="app.manifest">
-<!-- version: 2013051601 -->
+<!-- version: 2013051602 -->
 <head>
     <title>Schulze</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,6 +34,13 @@
     
     <script src="js/schulze.js"></script>
     <script src="js/main.js"></script>
+    
+    <script>
+    window._schulze_version = 2013051602;
+    $(window).ready(function() {
+        $('span.version').text(window._schulze_version);
+    });
+    </script>
 </head>
 
 <body style="padding: 1em; height: 100%">
@@ -98,6 +105,7 @@
         <div class="row-fluid">
             <div class="offset3 span6">
                 <div class="powered">
+                    Version <span class="version"></span> <br />
                     Powered by <a href="//vtk.be">Vlaamse Technische Kring Leuven</a>
                 </div>
             </div>
